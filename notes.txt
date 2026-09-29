@@ -1,0 +1,47 @@
+2026.09.11
+  - Исправлены ошибки при создании pcm устройств для HDMI RX audio
+    https://github.com/mar0x/rk_hdmirx
+
+2026.09.20
+  - Вот что необходимо для полноценной работы всего комплекса:
+
+    - Мой скрипт, который после записи файла, находит имя файла с камеры и таймкод.
+      https://disk.yandex.ru/d/M9j_URG8OsgVaw
+
+    - OBS Studio
+      https://github.com/obsproject/obs-studio
+
+      - Авторы не собирают для aarch64. Сборка из репозитория ubuntu отстаёт и отличается
+        от оригинальной по содержанию.
+        Предложено изменение https://github.com/obsproject/obs-studio/pull/12931
+        Авторы напряженно думают.
+
+      - Для уверенной работы на rk3588 нужна поддержка NV16 и NV24
+        Предложено изменение https://github.com/obsproject/obs-studio/pull/12932
+        Авторы увлечённо обсуждают
+
+      - Тут и сборка и поддержка rk3588
+        https://github.com/mar0x/obs-studio/tree/exp
+
+    - Модули для OBS:
+
+      - RTSP Server
+        https://obsproject.com/forum/resources/obs-rtspserver.1037/
+        (сборка для aarch64 https://github.com/mar0x/obs-rtspserver )
+
+      - Advanced Scene Switcher
+        https://github.com/WarmUpTill/SceneSwitcher
+        (сборка для aarch64 https://github.com/mar0x/obs-sceneswitcher )
+
+      - Source Record
+        https://obsproject.com/forum/resources/source-record.1285/
+        (сборка для aarch64 https://github.com/mar0x/obs-source-record )
+
+      - FFMpeg Rockchip codecs
+        https://github.com/mar0x/obs-ffmpeg-rkmpp
+
+      - Медиасервер mediamtx
+        https://mediamtx.org/
+        (авторы сами собирают для aarch64)
+
+      - Tailscale -- для удобства управления удаленно, через зоопарк сетей.
