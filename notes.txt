@@ -45,3 +45,12 @@
         (авторы сами собирают для aarch64)
 
       - Tailscale -- для удобства управления удаленно, через зоопарк сетей.
+
+2026.10.02
+  - для ubuntu 26.04 нет собранных пакетов с rockchip-multimedia (см. https://ppa.launchpadcontent.net/liujianfeng1994/rockchip-multimedia/ubuntu/)
+    - скандальный mpp: https://github.com/HermanChen/mpp -> https://github.com/mar0x/mpp
+    - загадочный rga: https://github.com/airockchip/librga -> https://github.com/mar0x/librga
+    - и только потом https://github.com/nyanmisaka/ffmpeg-rockchip
+      - dh_make --createorig -s
+      - dpkg-buildpackage -us -uc -rfakeroot -sa -F
+
