@@ -52,8 +52,15 @@
 2026.10.02
   - для ubuntu 26.04 нет собранных пакетов с rockchip-multimedia (см. https://ppa.launchpadcontent.net/liujianfeng1994/rockchip-multimedia/ubuntu/)
     - скандальный mpp: https://github.com/HermanChen/mpp -> https://github.com/mar0x/mpp
-    - загадочный rga: https://github.com/airockchip/librga -> https://github.com/mar0x/librga
+    - загадочный rga: https://github.com/tsukumijima/librga-rockchip -> https://github.com/mar0x/librga-rockchip
     - и только потом https://github.com/nyanmisaka/ffmpeg-rockchip -> https://github.com/mar0x/ffmpeg-rockchip
       - dh_make --createorig -s
       - dpkg-buildpackage -us -uc -rfakeroot -sa -F
 
+2026.10.05
+  - PPA https://launchpad.net/~mar0x/+archive/ubuntu/rk-obs
+  - для установки пакетов
+    - add-apt-repository ppa:mar0x/rk-obs
+  - для сборки и загрузки
+    - debuild -S -sd
+    - dput ppa:mar0x/rk-obs *_source.changes
