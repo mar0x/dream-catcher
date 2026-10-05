@@ -61,6 +61,10 @@
   - PPA https://launchpad.net/~mar0x/+archive/ubuntu/rk-obs
   - для установки пакетов
     - add-apt-repository ppa:mar0x/rk-obs
+
   - для сборки и загрузки
     - debuild -S -sd
     - dput ppa:mar0x/rk-obs *_source.changes
+
+  - для запуска obs
+    - MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 obs
