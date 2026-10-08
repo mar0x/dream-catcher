@@ -71,3 +71,61 @@
 
   - утилита для поиска пропавшего звука
     - pavucontrol
+
+2026.10.08
+  - резервное копирование
+    - системные настройки
+      - sudo tar -czf /system-etc-backup.tar.gz /etc
+    - настройки пользователя
+      - cd $HOME
+      - tar -czf user-settings-backup.tar.gz .ssh .config
+    - файлы /system-etc-backup.tar.gz и $HOMR/user-settings-backup.tar.gz скопировать и припрятать
+      там не все настройки, конечно, но хоть что-то.
+
+  - установка Armbian 26.8.3 resolute
+    - лучше это делать "начисто". Т.е. загрузиться с SD карты (не важно какая на SD карте версия)
+      заново разбить или отформатировать nvme и установить корневую файловую систему с образа
+      - https://mirror.yandex.ru/mirrors/armbian/dl/rock-5b-plus/archive/Armbian_26.8.3_Rock-5b-plus_resolute_vendor_6.1.115_gnome_desktop.img.xz
+
+      Обновлять eMMC/UFS/SPI не нужно.
+
+      У Armbian есть свой Armbian Imager и они рекомендуют пользоваться им (я не пробовал ;)
+
+    - установить время, настроить сеть и т.д
+    - "поправить" /usr/share/apport/package-hooks/dkms_packages.py
+      в текущем виде он несовместим с Armbian и генерирует ошибки при установке dkms-модулей
+      - cp /usr/share/apport/package-hooks/dkms_packages.py /usr/share/apport/package-hooks/dkms_packages.py.bak
+      - echo '#!/usr/bin/env python3' > /usr/share/apport/package-hooks/dkms_packages.py
+      - echo 'import sys' >> /usr/share/apport/package-hooks/dkms_packages.py
+      - echo 'sys.exit(0)' >> /usr/share/apport/package-hooks/dkms_packages.py
+    - обновить систему
+      - apt-get update && apt-get dist-upgrade
+    - подключить PPA rk-obs
+      - add-apt-repository ppa:mar0x/rk-obs
+    - снова обновиться
+      - apt-get dist-upgrade
+
+    - подключить оверлей для графического ускорителя
+      - echo 'overlays=panthor-gpu' >> /boot/armbianEnv.txt
+
+    - установить модули для звука
+      - apt-get install rk-hdmirx
+      - скопипилировать и подключить оверлеи
+        - armbian-add-overlay /usr/src/rk-hdmirx-1.0/rk3588-es8316-sound.dts
+        - armbian-add-overlay /usr/src/rk-hdmirx-1.0/rk3588-hdmirx-controller.dts
+      - перезагрузиться
+        - reboot
+      - проверить наличие PCM устройства для HDMI RX
+        - ls -l /dev/snd/pcmC4D0c
+
+    - установить OBS Studio и плагины
+      - apt-get install obs-studio obs-ffmpeg-rkmpp obs-rtspserver obs-sceneswitcher
+    - установить зависимости скрипта
+      - apt-get install ffmpeg tesseract-ocr
+
+    - о настройке gnome-remote-desktop
+      - https://askubuntu.com/questions/1499789/enable-rdp-from-command-line
+
+    - chrome
+      - curl -O 'https://dl.google.com/linux/direct/google-chrome-stable_current_arm64.deb'
+
