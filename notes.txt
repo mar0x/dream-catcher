@@ -122,7 +122,7 @@
         - ls -l /dev/snd/pcmC4D0c
 
     - установить OBS Studio и плагины
-      - apt-get install obs-studio obs-ffmpeg-rkmpp obs-rtspserver obs-sceneswitcher
+      - apt-get install obs-studio obs-plugins obs-ffmpeg-rkmpp obs-rtspserver obs-sceneswitcher
     - установить зависимости скрипта
       - apt-get install ffmpeg tesseract-ocr
 
