@@ -91,6 +91,10 @@
 
       У Armbian есть свой Armbian Imager и они рекомендуют пользоваться им (я не пробовал ;)
 
+      balenaEtcher некорректно работает с .xz , но если предварительно распаковать образ, то работает хорошо
+
+    - далее лучше выполнить 'sudo bash' и остальные команды вводить от рута, чтобы не повторять везде sudo.
+
     - установить время, настроить сеть и т.д
     - "поправить" /usr/share/apport/package-hooks/dkms_packages.py
       в текущем виде он несовместим с Armbian и генерирует ошибки при установке dkms-модулей
@@ -131,3 +135,25 @@
 
     - chrome
       - curl -O 'https://dl.google.com/linux/direct/google-chrome-stable_current_arm64.deb'
+
+    - mediamtx - скачиваем и распаковываем в /opt/mediamtx
+      - curl -LO 'https://github.com/bluenviron/mediamtx/releases/download/v1.21.2/mediamtx_v1.21.2_linux_arm64.tar.gz'
+      - sudo mkdir -p /opt/mediamtx
+      - sudo tar -C /opt/mediamtx -xf mediamtx*.tar.*
+
+    - утилита для поиска пропавшего звука
+      - apt-get install pavucontrol
+      - pavucontrol
+
+2026.10.12
+  - настройка OBS Studio
+    - запускать obs надо от непривелигерованного пользователя, который входит в
+      группу video. Пользователь, созданный при настройке Armbian обладает этим
+      свойством.
+
+    - для кодеков *_rkmpp установить ненулевой Keyframe Interval
+
+    - для уверенной работы звука убедиться, что поток звука из HDMI IN принимает
+      только один элемент-источник. Элементы Global тожк считаются. При этом временное
+      отключение или mute НЕ ПОМОГАЕТ. Элемент необходимо удалить или переконфигурировать
+      у него источник.
