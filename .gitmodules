@@ -1,3 +1,33 @@
 [submodule "deps/mpp"]
 	path = deps/mpp
 	url = ../mpp.git
+[submodule "deps/librga-rockchip"]
+	path = deps/librga-rockchip
+	url = ../librga-rockchip.git
+[submodule "deps/ffmpeg-rockchip"]
+	path = deps/ffmpeg-rockchip
+	url = ../ffmpeg-rockchip.git
+[submodule "deps/rockchip-multimedia-config"]
+	path = deps/rockchip-multimedia-config
+	url = ../rockchip-multimedia-config.git
+[submodule "deps/rk_hdmirx"]
+	path = deps/rk_hdmirx
+	url = ../rk_hdmirx.git
+[submodule "deps/libdatachannel"]
+	path = deps/libdatachannel
+	url = ../libdatachannel.git
+[submodule "deps/obs-studio"]
+	path = deps/obs-studio
+	url = ../obs-studio.git
+[submodule "deps/obs-ffmpeg-rkmpp"]
+	path = deps/obs-ffmpeg-rkmpp
+	url = ../obs-ffmpeg-rkmpp.git
+[submodule "deps/obs-rtspserver"]
+	path = deps/obs-rtspserver
+	url = ../obs-rtspserver.git
+[submodule "deps/obs-sceneswitcher"]
+	path = deps/obs-sceneswitcher
+	url = ../obs-sceneswitcher.git
+[submodule "deps/obs-source-record"]
+	path = deps/obs-source-record
+	url = ../obs-source-record.git
